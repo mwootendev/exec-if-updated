@@ -1,0 +1,23 @@
+{
+  "name": "exec-if-updated",
+  "version": "1.0.0",
+  "description": "Command line utility to execute a command only if a set of source files have been updated since a set of target files.\"",
+  "main": "exec-if-updated.js",
+  "bin": "exec-if-updated.js",
+  "keywords": [
+    "cli",
+    "exec",
+    "glob",
+    "run",
+    "updated",
+    "newer",
+    "build"
+  ],
+  "author": "Michael Wooten",
+  "license": "MIT",
+  "dependencies": {
+    "execa": "^0.10.0",
+    "globby": "^8.0.1",
+    "yargs": "^11.0.0"
+  }
+}
