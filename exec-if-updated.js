@@ -1,3 +1,5 @@
+#!/bin/env node
+
 const yargs = require('yargs');
 const globby = require('globby');
 const execa = require('execa');
