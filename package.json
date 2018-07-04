@@ -9,7 +9,11 @@
     "precompile": "mkdirp dist",
     "compile": "babel -o dist/exec-if-updated.js --presets env --no-comments --compact true --minified exec-if-updated.js",
     "postcompile": "copyfiles LICENSE package.json README.md dist",
-    "prepublish": "npm run clean && npm run compile"
+    "prerelease": "npm run clean && npm run compile",
+    "release": "npm pack dist/",
+    "release:patch": "npm version patch && npm run release",
+    "release:minor": "npm version minor && npm run release",
+    "release:major": "npm version major && npm run release"
   },
   "keywords": [
     "cli",
