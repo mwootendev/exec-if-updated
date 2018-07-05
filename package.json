@@ -2,12 +2,12 @@
   "name": "exec-if-updated",
   "version": "1.0.0",
   "description": "Command line utility to execute a command only if a set of source files have been updated since a set of target files.\"",
-  "main": "exec-if-updated.js",
-  "bin": "exec-if-updated.js",
+  "main": "./exec-if-updated.js",
+  "bin": "./exec-if-updated.js",
   "scripts": {
     "clean": "rimraf dist",
     "precompile": "mkdirp dist",
-    "compile": "babel -o dist/exec-if-updated.js --presets env --no-comments --compact true --minified exec-if-updated.js",
+    "compile": "babel ./exec-if-updated.js | uglifyjs -c -m --toplevel -o dist/exec-if-updated.js",
     "postcompile": "copyfiles LICENSE package.json README.md dist",
     "prerelease": "npm run clean && npm run compile",
     "release": "npm pack dist/",
@@ -36,6 +36,7 @@
     "babel-preset-env": "^1.7.0",
     "copyfiles": "^2.0.0",
     "mkdirp": "^0.5.1",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "uglify-es": "^3.3.9"
   }
 }
