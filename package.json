@@ -1,6 +1,6 @@
 {
   "name": "exec-if-updated",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Command line utility to execute a command only if a set of source files have been updated since a set of target files.\"",
   "main": "./exec-if-updated.js",
   "bin": "./exec-if-updated.js",
