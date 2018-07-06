@@ -1,0 +1,42 @@
+{
+  "name": "exec-if-updated",
+  "version": "1.1.0",
+  "description": "Command line utility to execute a command only if a set of source files have been updated since a set of target files.\"",
+  "main": "./exec-if-updated.js",
+  "bin": "./exec-if-updated.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "precompile": "mkdirp dist",
+    "compile": "babel ./exec-if-updated.js | uglifyjs -c -m --toplevel -o dist/exec-if-updated.js",
+    "postcompile": "copyfiles LICENSE package.json README.md dist",
+    "prerelease": "npm run clean && npm run compile",
+    "release": "npm publish dist/",
+    "release:patch": "npm version patch && npm run release",
+    "release:minor": "npm version minor && npm run release",
+    "release:major": "npm version major && npm run release"
+  },
+  "keywords": [
+    "cli",
+    "exec",
+    "glob",
+    "run",
+    "updated",
+    "newer",
+    "build"
+  ],
+  "author": "Michael Wooten",
+  "license": "MIT",
+  "dependencies": {
+    "execa": "^0.10.0",
+    "globby": "^8.0.1",
+    "yargs": "^11.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "copyfiles": "^2.0.0",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.6.2",
+    "uglify-es": "^3.3.9"
+  }
+}
