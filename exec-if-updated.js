@@ -37,6 +37,7 @@ async function main(options) {
       childProcess.stderr.pipe(process.stderr);
       process.stdin.pipe(childProcess.stdin);
       await childProcess;
+      process.exit();
     } catch (e) {
       console.error(e.message);
       process.exit(1);
@@ -59,8 +60,9 @@ function isSourceUpdated(sourceFiles, targetFiles) {
     fileModifiedTime :
     latestModifiedTime;
 
-  const latestSourceDate = sourceFiles.map(toModifiedDate).reduce(toLatestModified);
-  const latestTargetDate = targetFiles.map(toModifiedDate).reduce(toLatestModified);
+  const defaultDate = new Date(0);  
+  const latestSourceDate = sourceFiles.map(toModifiedDate).reduce(toLatestModified, defaultDate);
+  const latestTargetDate = targetFiles.map(toModifiedDate).reduce(toLatestModified, defaultDate);
 
   return latestSourceDate.getTime() > latestTargetDate.getTime();
 }
